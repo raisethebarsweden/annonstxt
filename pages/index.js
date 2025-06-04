@@ -3,107 +3,77 @@ import { useState } from 'react';
 export default function Home() {
   const [carModel, setCarModel] = useState('');
   const [price, setPrice] = useState('');
+  const [mileage, setMileage] = useState('');
+  const [year, setYear] = useState('');
   const [result, setResult] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const generateAd = () => {
-    // Temporär text tills vi kopplar OpenAI
-    setResult(`📢 **Till salu: ${carModel} för ${price} kr**\n\n` +
-              `✅ Bra skick\n` +
-              `✅ Full servicehistorik\n` +
-              `✅ Besiktigad\n\n` +
-              `📞 Kontakta mig på [telefonnummer]`);
+  const generateAd = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ carModel, price, mileage, year }),
+      });
+
+      if (!response.ok) throw new Error('Något gick fel');
+      const data = await response.json();
+      setResult(data.text);
+    } catch (error) {
+      console.error('Error:', error);
+      setResult('Fel: ' + error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div style={{ 
-      maxWidth: '800px', 
-      margin: '0 auto', 
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <h1 style={{ color: '#0070f3', textAlign: 'center' }}>Blocket AI Annonsgenerator 🚗</h1>
+    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
+      <h1>Blocket AI Generator</h1>
       
-      <div style={{
-        background: '#f5f5f5',
-        padding: '20px',
-        borderRadius: '8px',
-        marginTop: '20px'
-      }}>
-        <div style={{ marginBottom: '15px' }}>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-            Bilmodell:
-          </label>
-          <input
-            type="text"
-            placeholder="T.ex. Volvo XC60"
-            value={carModel}
-            onChange={(e) => setCarModel(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '10px',
-              borderRadius: '4px',
-              border: '1px solid #ddd'
-            }}
-          />
-        </div>
-
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-            Pris (kr):
-          </label>
-          <input
-            type="number"
-            placeholder="T.ex. 150000"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '10px',
-              borderRadius: '4px',
-              border: '1px solid #ddd'
-            }}
-          />
-        </div>
-
-        <button
-          onClick={generateAd}
-          style={{
-            background: '#0070f3',
-            color: 'white',
-            border: 'none',
-            padding: '12px 20px',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            width: '100%',
-            fontSize: '16px'
-          }}
+      {/* Formulär */}
+      <div style={{ display: 'grid', gap: '15px', marginBottom: '20px' }}>
+        <input
+          type="text"
+          placeholder="Bilmodell (t.ex. Volvo XC60)"
+          value={carModel}
+          onChange={(e) => setCarModel(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Pris (kr)"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Miltal"
+          value={mileage}
+          onChange={(e) => setMileage(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Årsmodell"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+        />
+        
+        <button 
+          onClick={generateAd} 
+          disabled={isLoading}
+          style={{ background: isLoading ? 'gray' : '#0070f3' }}
         >
-          Generera Annonstext
+          {isLoading ? 'Genererar...' : 'Skapa Annons'}
         </button>
       </div>
 
+      {/* Resultat */}
       {result && (
-        <div style={{
-          marginTop: '30px',
-          background: '#f9f9f9',
-          padding: '20px',
-          borderRadius: '8px',
-          whiteSpace: 'pre-line'
-        }}>
-          <h2 style={{ color: '#0070f3' }}>Din Annons:</h2>
-          <p>{result}</p>
-          <button
-            onClick={() => navigator.clipboard.writeText(result)}
-            style={{
-              background: '#4CAF50',
-              color: 'white',
-              border: 'none',
-              padding: '8px 15px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              marginTop: '10px'
-            }}
-          >
+        <div style={{ background: '#f5f5f5', padding: '15px', borderRadius: '5px' }}>
+          <h3>Din Annons:</h3>
+          <p style={{ whiteSpace: 'pre-line' }}>{result}</p>
+          <button onClick={() => navigator.clipboard.writeText(result)}>
             Kopiera Text
           </button>
         </div>
