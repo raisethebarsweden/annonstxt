@@ -28,7 +28,6 @@ export default function Home() {
   const handleManualApprove = () => {
     const timestamp = new Date().toLocaleString();
 
-    // 💌 Skicka e-post med Vercel-miljövariabler
     emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
@@ -38,7 +37,6 @@ export default function Home() {
     .then(() => console.log('✅ E-postnotis skickad!'))
     .catch((err) => console.error('❌ Fel vid e-post:', err));
 
-    // 📒 Logga betalning lokalt
     const entry = { phone: userPhone, timestamp };
     setPaymentLog((prev) => [...prev, entry]);
     console.log("📥 Ny betalning loggad:", entry);
@@ -60,6 +58,14 @@ export default function Home() {
         <title>Annonstext.se – Skriv en bilannons på 30 sekunder</title>
         <meta name="description" content="Skapa en professionell bilannons med Annonstext.se. Skriv in regnummer och miltal – få annonstexten klar på 30 sekunder." />
         <meta name="theme-color" content="#F9F9F6" />
+
+        {/* 👇 Open Graph / Social Preview */}
+        <meta property="og:title" content="Skriv en bilannons – utan skrivkramp" />
+        <meta property="og:description" content="Fyll i några fält och få en säljande annonstext på 30 sekunder – klar för Blocket eller Marketplace." />
+        <meta property="og:image" content="https://annonstxt.vercel.app/og-image.png" />
+        <meta property="og:url" content="https://annonstxt.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <div style={{
