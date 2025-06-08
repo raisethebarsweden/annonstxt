@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       varforSalg, varforSalgText, biltyp, biltypText
     } = req.body;
 
-    // Bygg prompten med snygg formatering
+    // Skapa en snygg och tydlig prompt med all info
     const prompt = `
 Skriv en professionell, ärlig och säljande annonstext för en bil baserat på följande information:
 

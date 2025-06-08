@@ -1,4 +1,32 @@
-{"ad":"Fantastisk undefined till salu - Perfekt för dig!\n\nDenna begagnade undefined från undefined är en riktig pärla med endast undefined mil på mätaren. Med dess sportiga design och smidiga köregenskaper kommer den definitivt att ge dig körglädje varje dag.\n\nFördelar med denna bil:\n1. Bränslesnål och miljövänlig\n2. Rymlig och bekväm för hela familjen\n3. Fullservicehistorik och väl underhållen\n4. Prisvärd och pålitlig transport\n\nPassa på att skaffa denna fantastiska bil till ett kanonpris på undefined kr. \n\nKontakta mig gärna för mer information eller för att boka en provkörning:\n[Telefon]\n[E-post]\n\nVälkommen med din förfrågan!"}--_curl_--"carModel":"Volvo XC60"
---_curl_--"price":250000
---_curl_--"mileage":12000
---_curl_--"year":2020
+<!DOCTYPE html><html lang="sv"><head><style data-next-hide-fouc="true">body{display:none}</style><noscript data-next-hide-fouc="true"><style>body{display:block}</style></noscript><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="icon" href="/favicon.ico"/><meta charSet="utf-8"/><meta name="theme-color" content="#D62828"/><meta name="description" content="Skapa en professionell bilannons på 30 sekunder med Annonstext.se – färdig för Blocket eller Facebook Marketplace."/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills.js"></script><script src="/_next/static/chunks/webpack.js" defer=""></script><script src="/_next/static/chunks/main.js" defer=""></script><script src="/_next/static/chunks/pages/_app.js" defer=""></script><script src="/_next/static/chunks/pages/_error.js" defer=""></script><script src="/_next/static/development/_buildManifest.js" defer=""></script><script src="/_next/static/development/_ssgManifest.js" defer=""></script><noscript id="__next_css__DO_NOT_USE__"></noscript></head><body><div id="__next"></div><script src="/_next/static/chunks/react-refresh.js"></script><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"statusCode":500}},"page":"/_error","query":{},"buildId":"development","isFallback":false,"err":{"name":"Error","source":"server","message":"The OPENAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the OpenAI client with an apiKey option, like new OpenAI({ apiKey: 'My API Key' }).","stack":"Error: The OPENAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the OpenAI client with an apiKey option, like new OpenAI({ apiKey: 'My API Key' }).\n    at new OpenAI (file:///workspaces/annonstxt/node_modules/openai/index.mjs:48:19)\n    at eval (webpack-internal:///(api)/./pages/api/generate.js:11:16)"},"gip":true,"scriptLoader":[]}</script></body></html>--_curl_--
+>   "regr": "ABC123"
+--_curl_--
+>   "miltal": "10000"
+--_curl_--
+>   "pris": "50000"
+--_curl_--
+>   "kommentar": "Bra bil"
+--_curl_--
+>   "skick": "Bra skick"
+--_curl_--
+>   "besiktigad": "Ja"
+--_curl_--
+>   "servicebok": "Ja
+--_curl_-- fullstämpad"
+--_curl_--
+>   "skador": false
+--_curl_--
+>   "dack": "Vinterdäck"
+--_curl_--
+>   "motorOk": "Ja"
+--_curl_--
+>   "vaxelladaOk": "Ja"
+--_curl_--
+>   "rost": false
+--_curl_--
+>   "skadorYttre": false
+--_curl_--
+>   "varforSalg": "Skaffat ny bil"
+--_curl_--
+>   "biltyp": "Familjebil"
+> 

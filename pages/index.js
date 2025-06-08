@@ -12,17 +12,25 @@ export default function Home() {
   const [paymentLog, setPaymentLog] = useState([]);
 
   const handleFormSubmit = async (formData) => {
-    setUserPhone(formData.telefon);
+    setUserPhone(formData.telefon); // Matcha telefonfältet
+
     setShowPaywall(true);
 
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    const { text } = await response.json();
-    setGeneratedText(text);
+      if (!response.ok) throw new Error('Fel vid generering');
+
+      const { text } = await response.json();
+      setGeneratedText(text);
+    } catch (error) {
+      console.error(error);
+      setGeneratedText('Något gick fel, försök igen senare.');
+    }
   };
 
   const handleManualApprove = () => {
