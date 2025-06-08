@@ -4,7 +4,6 @@ import emailjs from 'emailjs-com';
 import AnnonstextForm from './components/AnnonstextForm';
 import PaymentGate from './components/PaymentGate';
 import Footer from './components/Footer';
-import Fordonsinfo from './components/Fordonsinfo';  // Importera Fordonsinfo
 
 export default function Home() {
   const [showPaywall, setShowPaywall] = useState(false);
@@ -13,7 +12,7 @@ export default function Home() {
   const [paymentLog, setPaymentLog] = useState([]);
 
   const handleFormSubmit = async (formData) => {
-    setUserPhone(formData.phone);
+    setUserPhone(formData.telefon);
     setShowPaywall(true);
 
     const response = await fetch('/api/generate', {
@@ -57,9 +56,8 @@ export default function Home() {
     }}>
       <Head>
         <title>Annonstext.se – Skriv en bilannons på 30 sekunder</title>
-        <meta name="description" content="Skapa en professionell bilannons med Annonstext.se. Skriv in regnummer och miltal – få annonstexten klar på 30 sekunder." />
+        <meta name="description" content="Skapa en professionell bilannons med Annonstext.se. Fyll i formuläret och få annonstexten klar på 30 sekunder." />
         <meta name="theme-color" content="#F9F9F6" />
-        {/* 👇 Open Graph / Social Preview */}
         <meta property="og:title" content="Skriv en bilannons – utan skrivkramp" />
         <meta property="og:description" content="Fyll i några fält och få en säljande annonstext på 30 sekunder – klar för Blocket eller Facebook Marketplace." />
         <meta property="og:image" content="https://annonstxt.vercel.app/og-image.png" />
@@ -104,9 +102,6 @@ export default function Home() {
           width: '60px',
           margin: '0 auto 2rem'
         }} />
-
-        {/* Lägg till Fordonsinfo-komponenten här */}
-        <Fordonsinfo />
 
         {!showPaywall && !generatedText && (
           <AnnonstextForm onSubmit={handleFormSubmit} />
